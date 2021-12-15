@@ -25,5 +25,5 @@ output "node_groups" {
 
 output "cluster_ca_certificate" {
   description = "k8s eks certificate"
-  value       = "data.aws_eks_cluster.cluster.certificate_authority[0].data"
+  value       = data.aws_eks_cluster.cluster.certificate_authority[0].data
 }
