@@ -3,8 +3,8 @@ provider "aws" {
 }
 
 locals {
-  name            = "managed_node_groups-${random_string.suffix.result}"
-  cluster_version = "1.21"
+  name            = "jackchun-eks"
+  cluster_version = "1.20"
   region          = "ap-northeast-2"
 }
 
