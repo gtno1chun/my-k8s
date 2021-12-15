@@ -18,8 +18,8 @@ variable "map_roles" {
 
   default = [
     {
-      rolearn  = "arn:aws:iam::481230465846:role/role1"
-      username = "role1"
+      rolearn  = "arn:aws:iam::481230465846:role/jackchun-eks-role"
+      username = "jackchun"
       groups   = ["system:masters"]
     },
   ]
