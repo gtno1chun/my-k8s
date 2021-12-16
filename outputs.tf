@@ -23,18 +23,23 @@ output "node_groups" {
   value       = module.eks.node_groups
 }
 
-## Kubernetes provider : use app workspace
-output "kubernetes_host" {
-  description  = "k8s eks host" 
-  value        = data.aws_eks_cluster.cluster.endpoint
-}
-output "kubernetes_cluster_ca_certificate" {
-  description = "k8s eks certificate"
-  value       = base64decode(data.aws_eks_cluster.cluster.certificate_authority[0].data)
+# ## Kubernetes provider : use app workspace
+# output "kubernetes_host" {
+#   description  = "k8s eks host" 
+#   value        = data.aws_eks_cluster.cluster.endpoint
+# }
+# output "kubernetes_cluster_ca_certificate" {
+#   description = "k8s eks certificate"
+#   value       = base64decode(data.aws_eks_cluster.cluster.certificate_authority[0].data)
 
-}
-output "kubernetes_token" {
-  description = "k8s eks token"  
-  value       = data.aws_eks_cluster_auth.cluster.token
-  sensitive   = true
+# }
+# output "kubernetes_token" {
+#   description = "k8s eks token"  
+#   value       = data.aws_eks_cluster_auth.cluster.token
+#   sensitive   = true
+# }
+
+output "eks_cluster_id" {
+  description = "EKS cluster name"
+  value       = module.eks.cluster_id 
 }
