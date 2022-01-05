@@ -1,4 +1,4 @@
-output "cluster_security_group_id" {
+output "vault_endpoint" {
   description = ""
   value       = var.vault_endpoint
 }
