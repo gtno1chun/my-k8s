@@ -46,3 +46,8 @@ variable "map_users" {
     # },
   ]
 }
+
+variable "vault_endpoint" {
+  default = ""
+  
+}
