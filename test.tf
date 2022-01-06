@@ -16,16 +16,16 @@ provider "vault" {
   address = var.vault_endpoint
 }
 
-terraform {
-  backend "remote" {
-    hostname     = "app.terraform.io"
-    organization = "jackchun"
+# terraform {
+#   backend "remote" {
+#     hostname     = "app.terraform.io"
+#     organization = "jackchun"
 
-    workspaces {
-      name = "my-k8s"
-    }
-  }
-}
+#     workspaces {
+#       name = "my-k8s"
+#     }
+#   }
+# }
 
 data "vault_aws_access_credentials" "tfc" {
   backend = "aws"
