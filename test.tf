@@ -7,7 +7,7 @@ variable "approle_secret_id" {
 variable "name" { default = "dynamic-aws-creds-vault-admin" }
 
 provider "vault" {
-
+  address = var.vault_endpoint 
 }
 
 
