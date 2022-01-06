@@ -94,9 +94,15 @@
 # }
 
 
-# variable login_username {}
-# variable login_password {}
 
+variable "approle_id" {
+  description = ""
+
+}
+variable "approle_secret_id" {
+  description = ""
+
+}
 provider "vault" {
   address = var.vault_endpoint 
   auth_login {
