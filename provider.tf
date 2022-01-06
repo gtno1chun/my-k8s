@@ -20,18 +20,18 @@
 #   secret_key  = data.vault_aws_access_credentials.iam.secret_key 
 # }
 
-provider "vault" {
-  address = var.vault_endpoint
-  auth_login {
-    path = "auth/aws/login"
-    method = "aws"
-    parameters = {
-      role = "jackchun-role"
-      # heaer_value = "vault-token-test-role"
-    }
+# provider "vault" {
+#   address = var.vault_endpoint
+#   auth_login {
+#     path = "auth/aws/login"
+#     method = "aws"
+#     parameters = {
+#       role = "jackchun-role"
+#       # heaer_value = "vault-token-test-role"
+#     }
 
-  }
-}
+#   }
+# }
 
 # variable vault_secrets_engine {}
 # variable vault_access_role {}

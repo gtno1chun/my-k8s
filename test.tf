@@ -1,13 +1,13 @@
 variable "name" { default = "dynamic-aws-creds-operator" }
-variable "region" { default = "us-east-1" }
-variable "path" { default = "../vault-admin-workspace/terraform.tfstate" }
+variable "region" { default = "ap-northeast-2" }
+# variable "path" { default = "../vault-admin-workspace/terraform.tfstate" }
 variable "ttl" { default = "1" }
 
 # terraform {
 #   backend "local" {
 #     path = "terraform.tfstate"
 #   }
-# }
+}
 
 # data "terraform_remote_state" "admin" {
 #   backend = "local"
@@ -16,6 +16,21 @@ variable "ttl" { default = "1" }
 #     path = var.path
 #   }
 # }
+
+provider "vault" {
+  address = var.vault_endpoint
+  auth_login {
+    path = "auth/aws/login"
+    method = "aws"
+    parameters = {
+      role = "jackchun-role"
+      # heaer_value = "vault-token-test-role"
+    }
+
+  }
+}
+
+
 
 data "vault_aws_access_credentials" "creds" {
   backend = data.terraform_remote_state.admin.outputs.backend
