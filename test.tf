@@ -107,13 +107,12 @@ provider "vault" {
   }
 }
 
-data "vault_aws_access_credentials" "iam" {
-  backend = "aws-tfc" 
-  role    = "data.terraform_remote_state.my-k8s.outputs.role
+data "vault_aws_access_credentials" "creds" {
+  backend = vault_aws_secret_backend.aws.path
+  role    = vault_aws_secret_backend_role.role.name
 }
 
 provider "aws" {
-  region     = var.region
-  access_key = data.vault_aws_access_credentials.iam.access_key
-  secret_key = data.vault_aws_access_credentials.iam.secret_key
+  access_key = data.vault_aws_access_credentials.creds.access_key
+  secret_key = data.vault_aws_access_credentials.creds.secret_key
 }
