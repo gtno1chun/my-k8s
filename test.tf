@@ -17,19 +17,29 @@ data "terraform_remote_state" "admin" {
   }
 }
 
+# provider "vault" {
+#   address = var.vault_endpoint
+#   auth_login {
+#     path = "auth/aws/login"
+#     method = "aws"
+#     parameters = {
+#       role = "jackchun-role"
+#       # heaer_value = "vault-token-test-role"
+#     }
+
+#   }
+# }
+
 provider "vault" {
   address = var.vault_endpoint
   auth_login {
-    path = "auth/aws/login"
-    method = "aws"
+    path = "auth/token/login"
     parameters = {
-      role = "jackchun-role"
-      # heaer_value = "vault-token-test-role"
+      role_id   = "Token"   #var.approle_id
+      secret_id = "jackchun-token" #var.approle_secret_id
     }
-
   }
 }
-
 
 
 data "vault_aws_access_credentials" "creds" {
