@@ -17,7 +17,7 @@ data "vault_aws_access_credentials" "tfc" {
   backend = "aws"
   role    = "tfc"
   #type    = "creds"
-  type    = "sts"
+  #type    = "sts"
 }
 
 provider "aws" {
