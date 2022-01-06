@@ -13,11 +13,16 @@
 #     }
 #   }
 # }
+provider "aws" {
+  region = local.region
+  access_key  = data.vault_aws_access_credentials.iam.access_key
+  secret_key  = data.vault_aws_access_credentials.iam.secret_key 
+}
 
 provider "vault" {
   address = var.vault_endpoint
   auth_login {
-    path = "auth/aws/login"
+    path = "auth/tfc/login"
     method = "aws"
     parameters = {
       role = "test-role"
@@ -25,4 +30,10 @@ provider "vault" {
     }
 
   }
+}
+
+data "vault_aws_access_credentials" "iam" {
+  # region = var.env == "stg-cn" || var.env == "prod-cn" ? "cn-northwest-1" : "us-east-1"  ## china region workspace 는 반드시 cn-northwest-1 로 호출 하도록 해야 함
+  backend = var.vault_secrets_engine
+  role    = var.vault_access_role
 }
