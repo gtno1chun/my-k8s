@@ -13,7 +13,7 @@ variable "VAULT_TOKEN" {
 
 // vault provider는 write-only 값으로 주입된 환경변수 VAULT_TOKEN을 이용한다.
 provider "vault" {
-  address = "~"
+  address = var.vault_endpoint
 }
 
 terraform {
