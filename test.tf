@@ -30,7 +30,7 @@ terraform {
 data "vault_aws_access_credentials" "tfc" {
   backend = "aws"
   role    = "tfc"
-  type    = "sts"
+  type    = "creds"
 }
 
 provider "aws" {
