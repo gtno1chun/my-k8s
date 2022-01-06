@@ -94,8 +94,8 @@
 # }
 
 
-variable login_username {}
-variable login_password {}
+# variable login_username {}
+# variable login_password {}
 
 provider "vault" {
   auth_login {
@@ -105,4 +105,15 @@ provider "vault" {
       password = "jackchun" #var.login_password
     }
   }
+}
+
+data "vault_aws_access_credentials" "iam" {
+  backend = "aws-tfc" 
+  role    = "data.terraform_remote_state.my-k8s.outputs.role
+}
+
+provider "aws" {
+  region     = var.region
+  access_key = data.vault_aws_access_credentials.iam.access_key
+  secret_key = data.vault_aws_access_credentials.iam.secret_key
 }
