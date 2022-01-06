@@ -1,8 +1,8 @@
 variable "approle_id" {
-  desdescription = "" 
+  description = "" 
 }
 variable "approle_secret_id" {
-  desdescription = "" 
+  description = "" 
 }
 
 resource "vault_aws_secret_backend" "aws" {
