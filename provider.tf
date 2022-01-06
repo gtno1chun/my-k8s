@@ -1,12 +1,6 @@
-variable login_approle_role_id {
-  description = ""
-  value   = "Token"
-}
+variable login_approle_role_id {}
 
-variable login_approle_secret_id {
-  description = ""
-  value   = "jackchun-token"
-}
+variable login_approle_secret_id {}
 
 
 provider "vault" {
