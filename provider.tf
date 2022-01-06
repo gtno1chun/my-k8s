@@ -1,44 +1,27 @@
-# variable login_approle_role_id {}
+provider "vault" {
+  address = var.vault_endpoint
+}
 
-# variable login_approle_secret_id {}
+# terraform {
+#   backend "remote" {
+#     hostname     = "app.terraform.io"
+#     organization = "jackchun"
 
-
-# provider "vault" {
-#   auth_login {
-#     path = "auth/approle/login"
-
-#     parameters = {
-#       role_id   = var.login_approle_role_id
-#       secret_id = var.login_approle_secret_id
+#     workspaces {
+#       name = "my-k8s"
 #     }
 #   }
 # }
 
-# provider "aws" {
-#   region = local.region
-#   access_key  = data.vault_aws_access_credentials.iam.access_key
-#   secret_key  = data.vault_aws_access_credentials.iam.secret_key 
-# }
+data "vault_aws_access_credentials" "tfc" {
+  backend = "aws"
+  role    = "tfc"
+  type    = "creds"
+}
 
-# provider "vault" {
-#   address = var.vault_endpoint
-#   auth_login {
-#     path = "auth/aws/login"
-#     method = "aws"
-#     parameters = {
-#       role = "jackchun-role"
-#       # heaer_value = "vault-token-test-role"
-#     }
-
-#   }
-# }
-
-# variable vault_secrets_engine {}
-# variable vault_access_role {}
-
-# data "vault_aws_access_credentials" "iam" {
-#   # region = var.env == "stg-cn" || var.env == "prod-cn" ? "cn-northwest-1" : "us-east-1"  ## china region workspace 는 반드시 cn-northwest-1 로 호출 하도록 해야 함
-#   backend = "tfc"         #var.vault_secrets_engine
-#   role    = "test-role"   #var.vault_access_role
-# }
-
+provider "aws" {
+  region     = "ap-northeast-2"
+  access_key = data.vault_aws_access_credentials.tfc.access_key
+  secret_key = data.vault_aws_access_credentials.tfc.secret_key
+  token      = data.vault_aws_access_credentials.tfc.security_token
+}
