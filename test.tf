@@ -39,3 +39,8 @@ provider "aws" {
   secret_key = data.vault_aws_access_credentials.tfc.secret_key
   token      = data.vault_aws_access_credentials.tfc.security_token
 }
+
+output "access_key_o" {
+  description = ""
+  value  = "data.vault_aws_access_credentials.tfc.access_key"  
+}
