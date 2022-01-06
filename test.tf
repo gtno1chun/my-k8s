@@ -33,10 +33,10 @@ data "terraform_remote_state" "my-k8s" {
 provider "vault" {
   address = var.vault_endpoint
   auth_login {
-    path = "auth/token/login"
+    path = "auth/tfc/login"
     parameters = {
-      role_id   = "Token"   #var.approle_id
-      secret_id = "jackchun-token" #var.approle_secret_id
+      role_id   = var.approle_id
+      secret_id = var.approle_secret_id
     }
   }
 }
