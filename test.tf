@@ -5,13 +5,17 @@ variable "approle_secret_id" {
   description = "" 
 }
 variable "name" { default = "dynamic-aws-creds-vault-admin" }
+variable "VAULT_TOKEN " {
+  description = ""
+  
+}
 
 provider "vault" {
   address = var.vault_endpoint
 
   auth_login {
     path    = "auth/token/login"
-    token = "jackchun-token"  
+    token = var.VAULT_TOKEN   
   } 
   #alias = "approle"
   # alias = "Token"
