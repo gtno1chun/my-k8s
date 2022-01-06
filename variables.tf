@@ -66,7 +66,7 @@ variable "map_roles" {
   default = [
     {
       #rolearn  = "arn:aws:iam::481230465846:role/jackchun"
-      rolearn  = local.role_arn
+      rolearn  = "arn:aws:iam::481230465846:role/tfc"
       username = "jackchun"
       groups   = ["system:masters"]
     },
@@ -84,7 +84,7 @@ variable "map_users" {
   default = [
     {
       #userarn  = "arn:aws:iam::481230465846:user/jackchun"
-      userarn  =  local.user_arn
+      userarn  =  "arn:aws:iam::481230465846:user/vault*"
       username = "jackchun"
       groups   = ["system:masters"]
     },
