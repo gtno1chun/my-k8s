@@ -32,8 +32,11 @@ provider "vault" {
   }
 }
 
+variable vault_secrets_engine {}
+variable vault_access_role {}
+
 data "vault_aws_access_credentials" "iam" {
   # region = var.env == "stg-cn" || var.env == "prod-cn" ? "cn-northwest-1" : "us-east-1"  ## china region workspace 는 반드시 cn-northwest-1 로 호출 하도록 해야 함
-  backend = var.vault_secrets_engine
-  role    = var.vault_access_role
+  backend = "tfc"         #var.vault_secrets_engine
+  role    = "test-role"   #var.vault_access_role
 }
