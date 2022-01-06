@@ -1,45 +1,57 @@
-variable "aws_access_key" {}
-variable "aws_secret_key" {}
-variable "name" { default = "dynamic-aws-creds-vault-admin" }
+variable "name" { default = "dynamic-aws-creds-operator" }
+variable "region" { default = "us-east-1" }
+variable "path" { default = "../vault-admin-workspace/terraform.tfstate" }
+variable "ttl" { default = "1" }
 
 # terraform {
 #   backend "local" {
 #     path = "terraform.tfstate"
 #   }
+}
+
+# data "terraform_remote_state" "admin" {
+#   backend = "local"
+
+#   config = {
+#     path = var.path
+#   }
 # }
 
-provider "vault" {}
-
-resource "vault_aws_secret_backend" "aws" {
-  access_key = var.aws_access_key
-  secret_key = var.aws_secret_key
-  path       = "${var.name}-path"
-
-  default_lease_ttl_seconds = "120"
-  max_lease_ttl_seconds     = "240"
+data "vault_aws_access_credentials" "creds" {
+  backend = data.terraform_remote_state.admin.outputs.backend
+  role    = data.terraform_remote_state.admin.outputs.role
 }
 
-resource "vault_aws_secret_backend_role" "admin" {
-  backend         = vault_aws_secret_backend.aws.path
-  name            = "${var.name}-role"
-  credential_type = "iam_user"
-
-  policy_document = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "iam:*", "ec2:*"
-      ],
-      "Resource": "*"
-    }
-  ]
-}
-EOF
+provider "aws" {
+  region     = var.region
+  access_key = data.vault_aws_access_credentials.creds.access_key
+  secret_key = data.vault_aws_access_credentials.creds.secret_key
 }
 
-output "backend" {
-  value = vault_aws_secret_backend.aws.path
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["481230465846"] # Canonical
+}
+
+# Create AWS EC2 Instance
+resource "aws_instance" "main" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t2.nano"
+
+  tags = {
+    Name  = var.name
+    TTL   = var.ttl
+    owner = "${var.name}-guide"
+  }
 }
