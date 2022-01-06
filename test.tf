@@ -109,8 +109,8 @@ provider "vault" {
 }
 
 data "vault_aws_access_credentials" "creds" {
-  backend = vault_aws_secret_backend.tfc.path
-  role    = vault_aws_secret_backend_role.role.name
+  backend = "tfc" #var.approle_id  #"tfc" vault_aws_secret_backend.tfc.path
+  role    = "jackchun-role" #var.approle_secret_id #vault_aws_secret_backend_role.role.name
 }
 
 provider "aws" {
