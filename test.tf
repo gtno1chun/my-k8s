@@ -9,13 +9,13 @@ variable "ttl" { default = "1" }
 #   }
 # }
 
-# data "terraform_remote_state" "admin" {
-#   backend = "local"
+data "terraform_remote_state" "admin" {
+  backend = "local"
 
-#   config = {
-#     path = var.path
-#   }
-# }
+  config = {
+    path = var.path
+  }
+}
 
 provider "vault" {
   address = var.vault_endpoint
