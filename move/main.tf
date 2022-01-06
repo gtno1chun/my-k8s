@@ -1,10 +1,6 @@
 
 
-locals {
-  name            = "jackchun-eks-${random_string.suffix.result}"
-  cluster_version = "1.20"
-  region          = "ap-northeast-2"
-}
+
 
 ################################################################################
 # EKS Module
@@ -85,10 +81,7 @@ provider "kubernetes" {
 data "aws_availability_zones" "available" {
 }
 
-resource "random_string" "suffix" {
-  length  = 4
-  special = false
-}
+
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
