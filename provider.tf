@@ -26,7 +26,7 @@ provider "vault" {
     path = "auth/aws/login"
     method = "aws"
     parameters = {
-      role = "test-role"
+      role = "jackchun-role"
       # heaer_value = "vault-token-test-role"
     }
 
