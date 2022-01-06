@@ -9,7 +9,7 @@ variable "ttl" { default = "1" }
 #   }
 # }
 
-data "terraform_remote_state" "admin" {
+data "terraform_remote_state" "my-k8s" {
   backend = "local"
 
   config = {
