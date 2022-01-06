@@ -7,7 +7,7 @@ variable "ttl" { default = "1" }
 #   backend "local" {
 #     path = "terraform.tfstate"
 #   }
-}
+# }
 
 # data "terraform_remote_state" "admin" {
 #   backend = "local"
