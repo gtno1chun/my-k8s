@@ -100,10 +100,10 @@
 provider "vault" {
   address = var.vault_endpoint 
   auth_login {
-    path = "auth/userpass/login/jackchun"
-
+    path = "auth/tfc/login"
     parameters = {
-      password = "jackchun" #var.login_password
+      role_id   = var.approle_id
+      secret_id = var.approle_secret_id
     }
   }
 }
