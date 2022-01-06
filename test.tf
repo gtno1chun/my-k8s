@@ -8,7 +8,8 @@ variable "name" { default = "dynamic-aws-creds-vault-admin" }
 
 provider "vault" {
   address = var.vault_endpoint 
-  alias = "approle"
+  #alias = "approle"
+  alias = "Token"
   token = "jackchun-token"  #"${vault_approle_auth_backend_login.login.client_token}"
 }
 
