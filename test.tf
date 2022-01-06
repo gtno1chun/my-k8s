@@ -98,6 +98,7 @@
 # variable login_password {}
 
 provider "vault" {
+  address = var.vault_endpoint 
   auth_login {
     path = "auth/userpass/login/jackchun"
 
