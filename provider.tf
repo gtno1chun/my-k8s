@@ -23,7 +23,7 @@ provider "aws" {
 provider "vault" {
   address = var.vault_endpoint
   auth_login {
-    path = "auth/tfc/login"
+    path = "auth/aws/login"
     method = "aws"
     parameters = {
       role = "test-role"
@@ -42,7 +42,7 @@ data "vault_aws_access_credentials" "iam" {
   role    = "test-role"   #var.vault_access_role
 }
 
-output test_o{
+output test_o {
   description = ""
   value   = data.vault_aws_access_credentials.iam.access_key 
 }
