@@ -4,15 +4,19 @@ variable "approle_id" {
 variable "approle_secret_id" {
   description = "" 
 }
+variable "name" { default = "dynamic-aws-creds-vault-admin" }
 
 provider "vault" {
-  
+
 }
 
 
 resource "vault_aws_secret_backend" "aws" {
   access_key = var.approle_id
   secret_key = var.approle_secret_id
+  path       = "${var.name}-path"
+
+  
 }
 
 
