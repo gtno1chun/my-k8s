@@ -5,7 +5,8 @@ variable "approle_secret_id" {
   description = "" 
 }
 variable "name" { default = "dynamic-aws-creds-vault-admin" }
-variable "VAULT_TOKEN " {
+
+variable "VAULT_TOKEN" {
   description = ""
   
 }
