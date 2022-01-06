@@ -30,6 +30,16 @@ data "terraform_remote_state" "my-k8s" {
 #   }
 # }
 
+variable "approle_id" {
+  description = ""
+
+}
+variable "approle_secret_id" {
+  description = ""
+
+}
+
+
 provider "vault" {
   address = var.vault_endpoint
   auth_login {

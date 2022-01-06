@@ -42,7 +42,3 @@
 #   role    = "test-role"   #var.vault_access_role
 # }
 
-output test_o {
-  description = ""
-  value   = data.vault_aws_access_credentials.iam.access_key 
-}
