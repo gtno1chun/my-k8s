@@ -14,11 +14,11 @@
 #   }
 # }
 
-provider "aws" {
-  region = local.region
-  access_key  = data.vault_aws_access_credentials.iam.access_key
-  secret_key  = data.vault_aws_access_credentials.iam.secret_key 
-}
+# provider "aws" {
+#   region = local.region
+#   access_key  = data.vault_aws_access_credentials.iam.access_key
+#   secret_key  = data.vault_aws_access_credentials.iam.secret_key 
+# }
 
 provider "vault" {
   address = var.vault_endpoint
