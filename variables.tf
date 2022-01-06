@@ -49,10 +49,11 @@ variable "map_accounts" {
 # }
 
 ########### TEST CJB ######
-# locals {
-#   role    = "tfc"
+locals {
+  role_arn     = "arn:aws:iam::481230465846:role/tfc" 
+  user_arn     = "arn:aws:iam::481230465846:user/vault*"
 
-# }
+}
 
 variable "map_roles" {
   description = "Additional IAM roles to add to the aws-auth configmap."
@@ -64,7 +65,8 @@ variable "map_roles" {
 
   default = [
     {
-      rolearn  = "arn:aws:iam::481230465846:role/jackchun"
+      #rolearn  = "arn:aws:iam::481230465846:role/jackchun"
+      rolearn  = local.role_arn
       username = "jackchun"
       groups   = ["system:masters"]
     },
@@ -81,7 +83,8 @@ variable "map_users" {
 
   default = [
     {
-      userarn  = "arn:aws:iam::481230465846:user/jackchun"
+      #userarn  = "arn:aws:iam::481230465846:user/jackchun"
+      userarn  =  local.user_arn
       username = "jackchun"
       groups   = ["system:masters"]
     },
