@@ -16,7 +16,7 @@ resource "vault_aws_secret_backend" "aws" {
   secret_key = var.approle_secret_id
   path       = "${var.name}-path"
 
-  
+
 }
 
 
@@ -47,4 +47,12 @@ data "vault_aws_access_credentials" "creds" {
 provider "aws" {
   access_key = data.vault_aws_access_credentials.creds.access_key
   secret_key = data.vault_aws_access_credentials.creds.secret_key
+}
+
+output "backend" {
+  value = vault_aws_secret_backend.aws.path
+}
+
+output "role" {
+  value = vault_aws_secret_backend_role.admin.name
 }
