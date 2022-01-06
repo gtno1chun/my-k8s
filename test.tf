@@ -103,11 +103,6 @@ variable "approle_secret_id" {
   description = ""
 
 }
-provider "vault" {
-   address = var.vault_endpoint
-
- 
-}
 
 provider "vault" {
   address = var.vault_endpoint 
