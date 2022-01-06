@@ -14,10 +14,10 @@ variable "VAULT_TOKEN" {
 provider "vault" {
   address = var.vault_endpoint
 
-  auth_login {
-    path    = "auth/token/login"
-    token = var.VAULT_TOKEN   
-  } 
+  # auth_login {
+  #   path    = "auth/token/login"
+  #   token = var.VAULT_TOKEN   
+  # } 
   #alias = "approle"
   # alias = "Token"
   # token = "jackchun-token"  #"${vault_approle_auth_backend_login.login.client_token}"
@@ -53,14 +53,17 @@ EOT
 }
 
 # generally, these blocks would be in a different module
-data "vault_aws_access_credentials" "creds" {
-  backend = vault_aws_secret_backend.aws.path
-  role    = vault_aws_secret_backend_role.role.name
+data "vault_aws_access_credentials" "tfc" {
+  backend = "aws"
+  role    = "tfc"
+  type    = "sts"
 }
 
 provider "aws" {
-  access_key = data.vault_aws_access_credentials.creds.access_key
-  secret_key = data.vault_aws_access_credentials.creds.secret_key
+  region     = "~"
+  access_key = data.vault_aws_access_credentials.tfc.access_key
+  secret_key = data.vault_aws_access_credentials.tfc.secret_key
+  token      = data.vault_aws_access_credentials.tfc.security_token
 }
 
 output "backend" {
