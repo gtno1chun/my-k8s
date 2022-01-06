@@ -1,6 +1,4 @@
-provider "aws" {
-  region = local.region
-}
+
 
 locals {
   name            = "jackchun-eks-${random_string.suffix.result}"
