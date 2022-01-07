@@ -12,7 +12,7 @@ data "aws_ami" "ubuntu" {
   }
 
   depends_on = [
-    "aws_instance.web"
+    aws_instance.web
   ]
 
   owners = ["481230465846"] # Canonical
