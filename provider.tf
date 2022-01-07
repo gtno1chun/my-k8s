@@ -8,7 +8,7 @@ variable "approle_secret_id" {
 provider "vault" {
   address = var.vault_endpoint
   auth_login {
-    path = "auth/tfe/login"
+    path = "auth/aws/login"
     parameters = {
       role_id   = var.approle_id
       secret_id = var.approle_secret_id
@@ -35,9 +35,9 @@ data "vault_aws_access_credentials" "tfc" {
   #type    = "sts"
 }
 
-# provider "aws" {
-#   region     = "ap-northeast-2"
-#   access_key = data.vault_aws_access_credentials.tfc.access_key
-#   secret_key = data.vault_aws_access_credentials.tfc.secret_key
-#   #token      = data.vault_aws_access_credentials.tfc.security_token
-# }
+provider "aws" {
+  region     = "ap-northeast-2"
+  access_key = data.vault_aws_access_credentials.tfc.access_key
+  secret_key = data.vault_aws_access_credentials.tfc.secret_key
+  #token      = data.vault_aws_access_credentials.tfc.security_token
+}
