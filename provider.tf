@@ -26,7 +26,7 @@ provider "vault" {
 #       name = "my-k8s"
 #     }
 #   }
-# } 
+# }
 
 data "vault_aws_access_credentials" "tfc" {
   backend = "aws"
