@@ -1,28 +1,20 @@
-data "aws_ami" "ubuntu" {
-  most_recent = true
+resource "aws_instance" "ec2_example_with_data_source" {
 
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
-  }
+    ami           = "ami-0767046d1677be5a0"
+    instance_type =  "t2.micro"
 
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  depends_on = [
-    aws_instance.web
-  ]
-
-  owners = ["481230465846"] # Canonical
+    tags = {
+      Name = "Terraform EC2"
+    }
 }
 
-resource "aws_instance" "web" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t3.micro"
+data "aws_instance" "myawsinstance" {
+    filter {
+        name = "tag:Name"
+        values = ["Terraform EC2"]
+    }
 
-  tags = {
-    Name = "HelloWorld"
-  }
+    depends_on = [
+      "aws_instance.ec2_example_with_data_source"
+    ]
 }
