@@ -7,13 +7,13 @@ variable "approle_secret_id" {
 
 provider "vault" {
   address = var.vault_endpoint
-  auth_login {
-    path = "auth/aws/login"
-    parameters = {
-      role_id   = var.approle_id
-      secret_id = var.approle_secret_id
-    }
-  }
+  # auth_login {
+  #   path = "auth/aws/login"
+  #   parameters = {
+  #     role_id   = var.approle_id
+  #     secret_id = var.approle_secret_id
+  #   }
+  # }
 
 }
 
