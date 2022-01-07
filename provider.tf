@@ -1,5 +1,20 @@
+variable "approle_id" { 
+  description = ""
+} 
+variable "approle_secret_id" {
+  description = ""
+}
+
 provider "vault" {
   address = var.vault_endpoint
+  auth_login {
+    path = "auth/tfe/login"
+    parameters = {
+      role_id   = var.approle_id
+      secret_id = var.approle_secret_id
+    }
+  }
+
 }
 
 # terraform {
