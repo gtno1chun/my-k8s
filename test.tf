@@ -11,6 +11,10 @@ data "aws_ami" "ubuntu" {
     values = ["hvm"]
   }
 
+  depends_on = [
+    "aws_instance.web"
+  ]
+
   owners = ["481230465846"] # Canonical
 }
 
