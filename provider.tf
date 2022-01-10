@@ -39,5 +39,5 @@ provider "aws" {
   region     = "ap-northeast-2"
   access_key = data.vault_aws_access_credentials.tfc.access_key
   secret_key = data.vault_aws_access_credentials.tfc.secret_key
-  #token      = data.vault_aws_access_credentials.tfc.security_token
+  token      = data.vault_aws_access_credentials.tfc.security_token
 }
