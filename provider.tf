@@ -44,5 +44,5 @@ provider "aws" {
 
 output "out_token" {
   description = "value"
-  value   = "data.vault_aws_access_credentials.tfc.security_token"
+  value   = data.vault_aws_access_credentials.tfc.security_token
 }
