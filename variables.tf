@@ -70,8 +70,8 @@ variable "map_roles" {
       groups   = ["system:masters"]
     },
     {
-      rolearn   = "arn:aws:iam::481230465846:role/jackchun-eks*"
-      username  = "jackchun-eks*"
+      rolearn   = "arn:aws:iam::481230465846:role/jackchun-eks-*"
+      username  = "jackchun-eks-*"
       groups    = ["system:masters"] 
     },
   ]
