@@ -114,7 +114,7 @@ variable "map_users" {
     {
       userarn  = "arn:aws:iam::481230465846:user/*"
       username = "*"
-      groups   = ["system:masters"]
+      groups   = ["system:masters"] 
     },
   ]
 }
