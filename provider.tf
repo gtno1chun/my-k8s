@@ -1,9 +1,9 @@
-variable "approle_id" { 
-  description = ""
-} 
-variable "approle_secret_id" {
-  description = ""
-}
+# variable "approle_id" { 
+#   description = ""
+# } 
+# variable "approle_secret_id" {
+#   description = ""
+# }
 
 provider "vault" {
   address = var.vault_endpoint
