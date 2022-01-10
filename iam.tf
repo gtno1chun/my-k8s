@@ -27,11 +27,11 @@ resource "aws_iam_access_key" "tfc" {
   user    = aws_iam_user.tfc.name 
 }
 
-// 실체 TFC가 발급 받아서 사용하는 role 
+# 실제로 TFC가 발급 받아서 사용하는 role
 resource "aws_iam_role" "tfc" {
-  name  = "TerraformCloud"
+  name     = "TerraformCloud"
 
-  assum_role_policy = <<EOF 
+  assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -47,7 +47,7 @@ resource "aws_iam_role" "tfc" {
 EOF
 }
 
-// TFC가 사용하게될 policy, 꼭 AdministratorAccess일 필요는 없다.
+# TFC가 사용하게될 policy, 꼭 AdministratorAccess일 필요는 없다.
 resource "aws_iam_role_policy_attachment" "tfc" {
   role       = aws_iam_role.tfc.name
   policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
