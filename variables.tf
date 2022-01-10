@@ -65,9 +65,13 @@ variable "map_roles" {
 
   default = [
     {
-      #rolearn  = "arn:aws:iam::481230465846:role/jackchun"
-      rolearn  = "arn:aws:iam::481230465846:role/tfc"
+      rolearn  = "arn:aws:iam::481230465846:role/jackchun"
       username = "jackchun"
+      groups   = ["system:masters"]
+    },
+    {
+      rolearn  = "arn:aws:iam::481230465846:role/TerraformCloud"
+      username = "TerraformCloud"
       groups   = ["system:masters"]
     },
   ]
@@ -84,15 +88,14 @@ variable "map_users" {
   default = [
     {
       userarn  = "arn:aws:iam::481230465846:user/jackchun"
-      #userarn  =  "arn:aws:iam::481230465846:user/vault*"
       username = "jackchun"
       groups   = ["system:masters"]
     },
-    # {
-    #   userarn  = "arn:aws:iam::66666666666:user/user2"
-    #   username = "user2"
-    #   groups   = ["system:masters"]
-    # },
+    {
+      userarn  = "arn:aws:iam::481230465846:user/terraform-cloud"
+      username = "terraform-cloud"
+      groups   = ["system:masters"]
+    },
   ]
 }
 
