@@ -83,8 +83,8 @@ variable "map_users" {
 
   default = [
     {
-      #userarn  = "arn:aws:iam::481230465846:user/jackchun"
-      userarn  =  "arn:aws:iam::481230465846:user/vault*"
+      userarn  = "arn:aws:iam::481230465846:user/jackchun"
+      #userarn  =  "arn:aws:iam::481230465846:user/vault*"
       username = "jackchun"
       groups   = ["system:masters"]
     },
