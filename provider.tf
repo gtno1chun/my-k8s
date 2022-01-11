@@ -28,7 +28,7 @@ provider "vault" {
 #   }
 # }
 
-data "vault_aws_access_credentials" "vault-role" {
+data "vault_aws_access_credentials" "TerraformCloud" {
   backend = "aws"
   role    = "TerraformCloud"
   type    = "creds"
@@ -37,8 +37,8 @@ data "vault_aws_access_credentials" "vault-role" {
 
 provider "aws" {
   region     = "ap-northeast-2"
-  access_key = data.vault_aws_access_credentials.vault-role.access_key
-  secret_key = data.vault_aws_access_credentials.vault-role.secret_key
+  access_key = data.vault_aws_access_credentials.TerraformCloud.access_key
+  secret_key = data.vault_aws_access_credentials.TerraformCloud.secret_key
   #token      = data.vault_aws_access_credentials.vault-role.security_token
 }
 
