@@ -29,7 +29,7 @@ provider "vault" {
 # }
 
 data "vault_aws_access_credentials" "vault" {
-  backend = "aws-iam-user"
+  backend = "aws"
   role    = "vault-iam-user"
   type    = "creds"
   #type    = "sts"
