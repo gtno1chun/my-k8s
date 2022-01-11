@@ -46,8 +46,8 @@ data "vault_aws_access_credentials" "vault-assume" {
   backend = "aws-assume"
   role    = "tfc"
   #username = "terraform-cloud"
-  type    = "creds"
-  #type    = "sts"
+  #type    = "creds"
+  type    = "sts"
 }
 
 provider "aws" {
