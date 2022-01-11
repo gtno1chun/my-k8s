@@ -1,5 +1,5 @@
 resource "vault_aws_secret_backend" "tfc" {
-  path                      = "aws"
+  path                      = "aws-assume"
   access_key                = aws_iam_access_key.tfc.id
   secret_key                = aws_iam_access_key.tfc.secret
   default_lease_ttl_seconds = 1800
