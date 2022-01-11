@@ -47,11 +47,11 @@ data "vault_aws_access_credentials" "vault-assume" {
   role    = "tfc"
   role_arn = "arn:aws:iam::481230465846:role/TerraformCloud"
   #type    = "creds"
-  #type    = "sts"
+  type    = "sts"
 }
 
 provider "aws" {
-  alias      = "assume"
+  #alias      = "assume"
   region     = "ap-northeast-2"
   access_key = data.vault_aws_access_credentials.vault-assume.access_key
   secret_key = data.vault_aws_access_credentials.vault-assume.secret_key
