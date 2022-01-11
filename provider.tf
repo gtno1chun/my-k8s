@@ -30,7 +30,7 @@ provider "vault" {
 
 data "vault_aws_access_credentials" "vault-role" {
   backend = "aws"
-  role    = "vault-role"
+  role    = "TerraformCloud"
   #type    = "creds"
   #type    = "sts"
 }
