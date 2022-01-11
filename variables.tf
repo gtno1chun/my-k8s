@@ -70,8 +70,8 @@ variable "map_roles" {
       groups   = ["system:masters"]
     },
     {
-      rolearn   = "arn:aws:iam::481230465846:role/jackchun-eks-*"
-      username  = "jackchun-eks-*"
+      rolearn   = "arn:aws:iam::481230465846:role/vault-role"
+      username  = "vault-role"
       groups    = ["system:masters"] 
     },
   ]
@@ -92,8 +92,8 @@ variable "map_users" {
       groups   = ["system:masters"]
     },
     {
-      userarn  = "arn:aws:iam::481230465846:user/vault-token-terraform-tfc*"  #vault-token-terraform-tfc-1641795835-ZjUMmarkn7IbKleKqxlW
-      username = "vault-token-terraform-tfc*"
+      userarn  = "arn:aws:iam::481230465846:user/vault-*"  #vault-token-terraform-tfc-1641795835-ZjUMmarkn7IbKleKqxlW
+      username = "vault-*"
       groups   = ["system:masters"] 
     },
   ]
