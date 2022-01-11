@@ -52,3 +52,60 @@
 #   role       = aws_iam_role.tfc.name
 #   policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
 # }
+
+
+
+resource "aws_iam_user" "tfc" {
+  name  = "test-vault-user"
+}
+
+resource "aws_iam_user_policy" "tfc" {
+  name    = "test-vault-user-policy" 
+  user    = aws_iam_user.tfc.name 
+  policy  = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "sts:AssumeRole"
+      ],
+      "Resource": [
+        "arn:aws:iam::481230465846:role/test-VaultAssumeRole"
+      ]
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_access_key" "tfc" {
+  user    = aws_iam_user.tfc.name 
+}
+
+# 실제로 TFC가 발급 받아서 사용하는 role
+resource "aws_iam_role" "tfc" {
+  name     = "test-VaultAssumeRole"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::481230465846:user/test-vault-user"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+EOF
+}
+
+# TFC가 사용하게될 policy, 꼭 AdministratorAccess일 필요는 없다.
+resource "aws_iam_role_policy_attachment" "tfc" {
+  role       = aws_iam_role.tfc.name
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+}
