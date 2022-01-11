@@ -35,12 +35,12 @@ data "vault_aws_access_credentials" "vault" {
   #type    = "sts"
 }
 
-# provider "aws" {
-#   region     = "ap-northeast-2"
-#   access_key = data.vault_aws_access_credentials.vault.access_key
-#   secret_key = data.vault_aws_access_credentials.vault.secret_key
-#   token      = data.vault_aws_access_credentials.vault.security_token
-# }
+provider "aws" {
+  region     = "ap-northeast-2"
+  access_key = data.vault_aws_access_credentials.vault.access_key
+  secret_key = data.vault_aws_access_credentials.vault.secret_key
+  token      = data.vault_aws_access_credentials.vault.security_token
+}
 
 data "vault_aws_access_credentials" "vault-assume" {
   backend = "aws-assume"
@@ -50,6 +50,7 @@ data "vault_aws_access_credentials" "vault-assume" {
 }
 
 provider "aws" {
+  alias      = "assume"
   region     = "ap-northeast-2"
   access_key = data.vault_aws_access_credentials.vault-assume.access_key
   secret_key = data.vault_aws_access_credentials.vault-assume.secret_key
