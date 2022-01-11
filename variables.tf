@@ -90,7 +90,7 @@ variable "map_users" {
       groups   = ["system:masters"]
     },
     {
-      userarn  = "arn:aws:iam::481230465846:user/vault-*"  #vault-token-terraform-tfc-1641795835-ZjUMmarkn7IbKleKqxlW
+      userarn  = "arn:aws:iam::481230465846:user/vault-*"  
       username = "vault-*"
       groups   = ["system:masters"] 
     }, 
