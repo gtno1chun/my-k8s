@@ -48,13 +48,6 @@ variable "map_accounts" {
 #   ]
 # }
 
-########### TEST CJB ######
-locals {
-  role_arn     = "arn:aws:iam::481230465846:role/tfc" 
-  user_arn     = "arn:aws:iam::481230465846:user/vault*"
-
-}
-
 variable "map_roles" {
   description = "Additional IAM roles to add to the aws-auth configmap."
   type = list(object({
