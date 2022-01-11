@@ -84,11 +84,11 @@ variable "map_users" {
       username = "jackchun"
       groups   = ["system:masters"]
     },
-    # {
-    #   userarn  = "arn:aws:iam::481230465846:user/"  #vault-token-terraform-tfc-1641795835-ZjUMmarkn7IbKleKqxlW
-    #   username = "vault-*"
-    #   groups   = ["system:masters"] 
-    # },
+    {
+      userarn  = "arn:aws:iam::481230465846:user/vault-*"  #vault-token-terraform-tfc-1641795835-ZjUMmarkn7IbKleKqxlW
+      username = "vault-*"
+      groups   = ["system:masters"] 
+    },
   ]
 }
 
