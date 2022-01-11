@@ -42,6 +42,19 @@ provider "aws" {
   token      = data.vault_aws_access_credentials.vault.security_token
 }
 
+data "vault_aws_access_credentials" "vault-assume" {
+  backend = "aws-assume"
+  role    = "tfc"
+  type    = "creds"
+  #type    = "sts"
+}
+
+provider "aws" {
+  region     = "ap-northeast-2"
+  access_key = data.vault_aws_access_credentials.vault-assume.access_key
+  secret_key = data.vault_aws_access_credentials.vault-assume.secret_key
+  token      = data.vault_aws_access_credentials.vault-assume.security_token
+}
 # output "out_token" {
 #   description = "value"
 #   value   = data.vault_aws_access_credentials.tfc.security_token
