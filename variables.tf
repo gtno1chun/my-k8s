@@ -94,11 +94,11 @@ variable "map_users" {
     #   username = "vault-*"
     #   groups   = ["system:masters"] 
     # }, 
-    {
-      userarn  = "arn:aws:iam::481230465846:user/terraform-cloud" 
-      username = "terraform-cloud"
-      groups   = ["system:masters"] 
-    },
+    # {
+    #   userarn  = "arn:aws:iam::481230465846:user/terraform-cloud" 
+    #   username = "terraform-cloud"
+    #   groups   = ["system:masters"] 
+    # },
   ]
 }
 
