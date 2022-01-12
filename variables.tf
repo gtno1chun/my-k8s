@@ -67,11 +67,11 @@ variable "map_roles" {
     #   username  = "vault-role"
     #   groups    = ["system:masters"] 
     # },
-    {
-      rolearn   = "arn:aws:iam::481230465846:role/TerraformCloud"
-      username  = "TerraformCloud"
-      groups    = ["system:masters"] 
-    },
+    # {
+    #   rolearn   = "arn:aws:iam::481230465846:role/TerraformCloud"
+    #   username  = "TerraformCloud"
+    #   groups    = ["system:masters"] 
+    # },
   ]
 }
 
