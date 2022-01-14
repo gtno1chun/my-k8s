@@ -8,46 +8,6 @@ variable "map_accounts" {
   ]
 }
 
-
-# variable "map_roles" {
-#   description = "Additional IAM roles to add to the aws-auth configmap."
-#   type = list(object({
-#     rolearn  = string
-#     username = string
-#     groups   = list(string)
-#   }))
-
-#   default = [
-#     {
-#       rolearn  = "arn:aws:iam::481230465846:role/jackchun"
-#       username = "jackchun"
-#       groups   = ["system:masters"]
-#     },
-#   ]
-# }
-
-# variable "map_users" {
-#   description = "Additional IAM users to add to the aws-auth configmap."
-#   type = list(object({
-#     userarn  = string
-#     username = string
-#     groups   = list(string)
-#   }))
-
-#   default = [
-#     {
-#       userarn  = "arn:aws:iam::481230465846:user/jackchun"
-#       username = "jackchun"
-#       groups   = ["system:masters"]
-#     },
-#     # {
-#     #   userarn  = "arn:aws:iam::66666666666:user/user2"
-#     #   username = "user2"
-#     #   groups   = ["system:masters"]
-#     # },
-#   ]
-# }
-
 variable "map_roles" {
   description = "Additional IAM roles to add to the aws-auth configmap."
   type = list(object({
@@ -62,16 +22,6 @@ variable "map_roles" {
       username = "jackchun"
       groups   = ["system:masters"]
     },
-    {
-      rolearn   = "arn:aws:iam::481230465846:role/test-VaultAssumeRole"
-      username  = "test-VaultAssumeRole"
-      groups    = ["system:masters"] 
-    },
-    # {
-    #   rolearn   = "arn:aws:iam::481230465846:role/TerraformCloud"
-    #   username  = "TerraformCloud"
-    #   groups    = ["system:masters"] 
-    # },
   ]
 }
 
@@ -89,16 +39,6 @@ variable "map_users" {
       username = "jackchun"
       groups   = ["system:masters"]
     },
-    {
-      userarn  = "arn:aws:iam::481230465846:user/test-vault-user"  
-      username = "test-vault-user"
-      groups   = ["system:masters"] 
-    }, 
-    # {
-    #   userarn  = "arn:aws:iam::481230465846:user/terraform-cloud" 
-    #   username = "terraform-cloud"
-    #   groups   = ["system:masters"] 
-    # },
   ]
 }
 

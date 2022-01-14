@@ -43,9 +43,9 @@ provider "vault" {
 # }
 
 data "vault_aws_access_credentials" "vault-assume" {
-  backend = "test-aws-assume"
+  backend = "aws-eks"
   role    = "tfc"
-  role_arn = "arn:aws:iam::481230465846:role/test-VaultAssumeRole"
+  #role_arn = "arn:aws:iam::481230465846:role/TerraformCloud"
   #type    = "creds"
   type    = "sts"
 }
