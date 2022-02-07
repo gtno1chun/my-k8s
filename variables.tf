@@ -18,8 +18,8 @@ variable "map_roles" {
 
   default = [
     {
-      rolearn  = "arn:aws:iam::481230465846:role/jackchun"
-      username = "jackchun"
+      rolearn  = "arn:aws:iam::481230465846:role/VaultCloud-Role"
+      username = "vaultcloud-user"
       groups   = ["system:masters"]
     },
   ]
@@ -35,8 +35,8 @@ variable "map_users" {
 
   default = [
     {
-      userarn  = "arn:aws:iam::481230465846:user/jackchun"
-      username = "jackchun"
+      userarn  = "arn:aws:iam::481230465846:user/vaultcloud-user"
+      username = "vaultcloud-user"
       groups   = ["system:masters"]
     },
   ]
