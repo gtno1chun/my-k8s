@@ -28,25 +28,17 @@ provider "vault" {
 #   }
 # }
 
-# data "vault_aws_access_credentials" "vault" {
-#   backend = "aws-iam-user"
-#   role    = "vault-iam-user"
-#   type    = "creds"
-#   #type    = "sts"
-# }
 
-# provider "aws" {
-#   region     = "ap-northeast-2"
-#   access_key = data.vault_aws_access_credentials.vault.access_key
-#   secret_key = data.vault_aws_access_credentials.vault.secret_key
-#   token      = data.vault_aws_access_credentials.vault.security_token
+# data "vault_aws_access_credentials" "vault-assume" {
+#   backend = "aws-eks"
+#   role    = "tfc"
+#   #role_arn = "arn:aws:iam::481230465846:role/TerraformCloud"
+#   #type    = "creds"
+#   type    = "sts"
 # }
-
 data "vault_aws_access_credentials" "vault-assume" {
   backend = "aws-eks"
-  role    = "tfc"
-  #role_arn = "arn:aws:iam::481230465846:role/TerraformCloud"
-  #type    = "creds"
+  role    = "user-tfc"
   type    = "sts"
 }
 
