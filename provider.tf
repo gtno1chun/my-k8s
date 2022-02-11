@@ -29,18 +29,18 @@ provider "vault" {
 # }
 
 
-data "vault_aws_access_credentials" "vault-assume" {
-  backend = "aws-eks"
-  role    = "tfc"
-  #role_arn = "arn:aws:iam::481230465846:role/TerraformCloud"
-  #type    = "creds"
-  type    = "sts"
-}
 # data "vault_aws_access_credentials" "vault-assume" {
 #   backend = "aws-eks"
-#   role    = "user-tfc"
+#   role    = "tfc"
+#   #role_arn = "arn:aws:iam::481230465846:role/TerraformCloud"
+#   #type    = "creds"
 #   type    = "sts"
 # }
+data "vault_aws_access_credentials" "vault-assume" {
+  backend = "aws-eks"
+  role    = "user-tfc"
+  type    = "sts"
+}
 
 provider "aws" {
   #alias      = "assume"
