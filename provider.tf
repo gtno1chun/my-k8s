@@ -37,9 +37,10 @@ provider "vault" {
 #   type    = "sts"
 # }
 data "vault_aws_access_credentials" "vault-assume" {
-  backend = "aws-eks"
-  role    = "user-tfc"
-  type    = "sts"
+  backend   = "aws-eks"
+  role      = "aws-tfc-role"
+  role_arn  = "arn:aws:iam::481230465846:role/VaultCloud-Role"
+  type      = "sts"
 }
 
 provider "aws" {
@@ -47,7 +48,7 @@ provider "aws" {
   region     = "ap-northeast-2"
   access_key = data.vault_aws_access_credentials.vault-assume.access_key
   secret_key = data.vault_aws_access_credentials.vault-assume.secret_key
-  #token      = data.vault_aws_access_credentials.vault-assume.security_token
+  token      = data.vault_aws_access_credentials.vault-assume.security_token
 }
 # output "out_token" {
 #   description = "value"
