@@ -35,9 +35,9 @@ module "eks" {
 
   node_groups = {
     example = {
-      desired_capacity = 1
+      desired_capacity = 3
       max_capacity     = 10
-      min_capacity     = 1
+      min_capacity     = 2
 
       instance_types = ["t3.medium"]
       k8s_labels = {
