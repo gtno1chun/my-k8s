@@ -39,7 +39,7 @@ module "eks" {
       max_capacity     = 10
       min_capacity     = 2
 
-      instance_types = ["t4g.large"]
+      instance_types = ["m5.large"]
       k8s_labels = {
         Example    = "managed_node_groups"
         GithubRepo = "terraform-aws-eks"
