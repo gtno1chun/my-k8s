@@ -52,7 +52,6 @@ variable "VAULT_TOKEN" {
 
 variable "username_vault" {
   description = "vault user name"
-  name = "jackchun"   
 }
 variable "password_vault" {
   desscription = "vault password" 
