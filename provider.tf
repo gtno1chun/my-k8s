@@ -18,7 +18,7 @@ provider "vault" {
       password = var.password_vault 
     }
   }
-}
+} 
 
 # terraform {
 #   backend "remote" {
