@@ -5,16 +5,19 @@
 #   description = ""
 # }
 
+# provider "vault" {
+#   address = var.vault_endpoint
+# }
+
 provider "vault" {
   address = var.vault_endpoint
-  # auth_login {
-  #   path = "auth/aws/login"
-  #   parameters = {
-  #     role_id   = var.approle_id
-  #     secret_id = var.approle_secret_id
-  #   }
-  # }
-
+  auth_login {
+    path = format("auth/userpass/login%s", var.username_vault)
+    parameters = {
+      username = var.username_vault.name
+      password = var.password_vault 
+    }
+  }
 }
 
 # terraform {

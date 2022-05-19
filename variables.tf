@@ -50,3 +50,10 @@ variable "VAULT_TOKEN" {
   description = "vault access Token : https://registry.terraform.io/providers/hashicorp/vault/latest/docs#token"  
 }
 
+variable "username_vault" {
+  description = "vault user name"
+  name = "jackchun"   
+}
+variable "password_vault" {
+  desscription = "vault password" 
+}
