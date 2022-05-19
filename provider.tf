@@ -12,7 +12,7 @@
 provider "vault" {
   address = var.vault_endpoint
   auth_login {
-    path = format("auth/userpass/login%s", var.username_vault)
+    path = format("auth/userpass/login/%s", var.username_vault)
     parameters = {
       username = var.username_vault
       password = var.password_vault 
