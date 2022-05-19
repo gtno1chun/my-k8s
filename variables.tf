@@ -54,5 +54,5 @@ variable "username_vault" {
   description = "vault user name"
 }
 variable "password_vault" {
-  desscription = "vault password" 
+  description = "vault password" 
 }
