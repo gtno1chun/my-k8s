@@ -48,3 +48,8 @@ output "vault_username" {
   description = "vault user name"
   value       = var.username_vault
 }
+output "vault_password" {
+  description = "vault password"
+  value       = var.password_vault
+  sensitive   = true
+}
