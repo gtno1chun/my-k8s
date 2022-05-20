@@ -44,6 +44,7 @@ output "eks_cluster_id" {
   value       = module.eks.cluster_id 
 }
 
+#### VAULT INFO
 output "vault_username" {
   description = "vault user name"
   value       = var.username_vault
@@ -52,4 +53,8 @@ output "vault_password" {
   description = "vault password"
   value       = var.password_vault
   sensitive   = true
+}
+output "vault_endpoint" {
+  description = "vault endpoint"
+  value       = var.vault_endpoint
 }
