@@ -46,9 +46,9 @@ variable "vault_endpoint" {
   default = ""
 }
 
-variable "VAULT_TOKEN" {
-  description = "vault access Token : https://registry.terraform.io/providers/hashicorp/vault/latest/docs#token"  
-}
+# variable "VAULT_TOKEN" {
+#   description = "vault access Token : https://registry.terraform.io/providers/hashicorp/vault/latest/docs#token"  
+# }
 
 variable "username_vault" {
   description = "vault user name"
