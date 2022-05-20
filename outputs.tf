@@ -43,3 +43,8 @@ output "eks_cluster_id" {
   description = "EKS cluster name"
   value       = module.eks.cluster_id 
 }
+
+output "vault_username" {
+  description = "vault user name"
+  value       = var.username_vault
+}
