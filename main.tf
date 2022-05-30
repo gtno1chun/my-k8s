@@ -37,7 +37,7 @@ module "eks" {
     example = {
       desired_capacity = 2
       max_capacity     = 10
-      min_capacity     = 1
+      min_capacity     = 2
 
       instance_types = ["m5.large"]
       k8s_labels = {
