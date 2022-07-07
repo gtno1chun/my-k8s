@@ -5,7 +5,7 @@ resource "random_string" "suffix" {
 
 locals {
   name            = "jackchun-eks-${random_string.suffix.result}"
-  cluster_version = "1.21"
+  cluster_version = "1.20"
   region          = "ap-northeast-2"
 }
 
@@ -17,8 +17,7 @@ locals {
 
 module "eks" {
   source = "terraform-aws-modules/eks/aws"
-  # version = "17.24.0"
-  version = "~> 18.0"
+  version = "17.24.0"
 
   cluster_name    = local.name
   cluster_version = local.cluster_version
@@ -26,23 +25,19 @@ module "eks" {
   cluster_endpoint_public_access  = true
 
   vpc_id  = module.vpc.vpc_id
-  subnet_ids = module.vpc.private_subnets
+  subnets = module.vpc.private_subnets
 
-  # node_groups_defaults = {
-  eks_managed_node_group_defaults = {
+  node_groups_defaults = {
     ami_type  = "AL2_x86_64"
     disk_size = 50
   }
 
-  # node_groups = {
-  eks_managed_node_groups = {
+  node_groups = {
     example = {
-      # desired_capacity = 1
-      # max_capacity     = 10
-      # min_capacity     = 1
-      desired_size = 1
-      max_size     = 10
-      min_size     = 1
+
+      desired_capacity = 1
+      max_capacity     = 10
+      min_capacity     = 1
 
       instance_types = ["m5.large"]
       # k8s_labels = {
