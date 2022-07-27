@@ -5,7 +5,7 @@ resource "random_string" "suffix" {
 
 locals {
   name            = "jackchun-eks-${random_string.suffix.result}"
-  cluster_version = "1.20"
+  cluster_version = "1.21"  # change 22/07/27
   region          = "ap-northeast-2"
 }
 
